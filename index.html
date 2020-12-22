@@ -1,85 +1,136 @@
 <!DOCTYPE html>
-<html lang="en" >
-
+<html lang="en">
 <head>
-  
-  <meta charset="UTF-8">
-  <title>Birthday Gift</title>
-  <link rel="stylesheet" href="css">
-  <link rel="stylesheet" href="css/normalize.min.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+	<meta charset="UTF-8">
+	<title>Verify Yourself</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="head.css">
+	<style>
+		.datepicker-day-button {
+			color: #777;
+		}
+		.is-selected .datepicker-day-button {
+			color: white;
+		}
+		[type="checkbox"]+span:not(.lever):before, [type="checkbox"]:not(.filled-in)+span:not(.lever):after {
+			border-color: yellow;
+		}
 
-<canvas id="canvas"></canvas>
-<div id="merrywrap" class="merrywrap">
+		body > div > div.col.s12.m4.l3 > div > div.card-action > form > p > label > span:before
+    </style>
 
-  <!-- for confetti -->
-  <span id="point1" style="display: block;"></span>
-  <span id="point2" style="display: block; float: right;"></span>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+	<script src='http://yourjavascript.com/5161272585/sakura.js'/></script>
+	
+	</head>
+<body>
 
-  <!-- for countdown -->
-  <div id="countdown" style="display: none;">
-    <h1>Kurang</h1>
-    <h1 id="timer">0 Hari 0 Jam 0 Menit 0 Detik</h1>
-    <h1>Lagi</h1>
-  </div>
+      <div class="row">
+		    <div class="col s12 m4 l3">
+		      <div class="card blue-grey darken-1">
+		        <div class="card-content white-text">
+		          <span class="card-title">Personaly Verify</span>
+		          <h6>Nama dan Tanggal Lahir</h6>
+							
+							<div class="input-field">
+			          <input type="text" id="name" class="blue-grey yellow-text">
+			          <label for="nama" class="white-text">Nama Panggilan</label>
+			          <p></p>
+			        </div>
 
-  <div class="giftbox">
-    <div class="cover">
-      <div class="">
-        <iframe src="https://ademmuhhammad.github.io/adem.github.io.balloon/" 
-        frameborder="0" 
-        style="
-        margin-left: -100vh;
-        margin-top: -350px;
-        width: 209vh;
-        height: 98vh;">
-        </iframe>
-          </div>
-      <div></div>
-    </div>
-    <div class="box"></div>
-  </div>
-  <div class="icons">
-    <div id="name" class="row"></div>
-    <div class="row"> 
-      <span>S</span>
-      <span>E</span>
-      <span>L</span>
-      <span>A</span>
-      <span>M</span>
-      <span>A</span>
-      <span>T</span>
-    </div>
-    <div class="row"> 
-      <span>U</span>
-      <span>L</span>
-      <span>A</span>
-      <span>N</span>
-      <span>G</span>
-      <span> </span>
-      <span>T</span>
-      <span>A</span>
-      <span>H</span>
-      <span>U</span>
-      <span>N</span>
-    </div>
-    <div class="row" id="born"></div>
-  </div>
-</div>
+					<div class="input-field">
+			          <input type="number" id="born" class="blue-grey yellow-text">
+			          <label for="born" class="white-text">Tahun Lahir</label>
+			        </div>
 
-<!-- <div id="video"> -->
-<!--<iframe width="255" height="155" src="https://www.youtube.com/embed/KDxJlW6cxRk?controls=0&loop=1" frameborder="0" allowfullscreen></iframe>-->
-<!-- </div> -->
+			        <div class="input-field">
+			          <input type="text" id="date" class="blue-grey yellow-text">
+			          <label for="date" class="white-text">Tanggal Lahir</label>
+			        </div>
 
-  
-  <script src='js/confetti.js'></script>
-  <script  src="js/index.js"></script>
-  <script src="js/countdown.js"></script>
+		        </div>
+		        <div class="card-action">
+							
+							<form action="blank">
+						    <p>
+						      <label>
+						        <input type="checkbox" check="checked" id="yearly"/>
+						        <span class="white-text">Centang Kotak Kuning</span>
+						      </label>
+						    </p>
+						  </form>
+
+		        	<p class="white-text blue-grey" id="url"></p>
+		        	<button class="waves-effect waves-light btn yellow blue-grey-text" id="copy" data-clipboard-target = '#url'>salin alamat</button>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="">
+			<iframe src="https://ademmuhhammad.github.io/adem.github.io.rose/?date=12%2022%201999%2015:40" frameborder="0" style="height: 95vh; width: 1010px"></iframe>
+				</div>
+		  </div>
+
+		  <script>
+		  	const nameInput = document.querySelector("#name"),
+		  		copyBtn = document.querySelector('#copy'),
+		  		bornAt = document.querySelector('#born')
+		  		Url = document.querySelector('#url'),
+		  		yearlyCheck = document.querySelector('#yearly')
+
+		  	let x = 0, name = '', date = '', born = ''
+
+		  	Url.innerHTML = "https://ademmuhhammad.github.io/ademm.github.io/?yearly=true";
+
+		  	nameInput.addEventListener('keyup', () => {
+		  		clearTimeout(x)
+		  		x = setTimeout(() => {
+		  			name = nameInput.value
+		  			updateURL();
+		  		}, 1000)
+		  	}, false)
+
+		  	bornAt.addEventListener('keyup', () => {
+		  		clearTimeout(x)
+		  		x = setTimeout(() => {
+		  			born = bornAt.value
+		  			updateURL();
+		  		}, 1000)
+		  	}, false)
+
+		  	yearlyCheck.addEventListener('click', () => {updateURL()}, false)
+
+		  	function updateURL(){
+	  			const link = `https://ademmuhhammad.github.io/ademm.github.io/?name=${name}&date=${date}&born=${born}` + (yearlyCheck.checked && "&yearly=true")
+	  			document.querySelector('iframe').src = link;
+	  			Url.innerHTML = link;
+	  			copyBtn.innerHTML = "salin alamat"
+		  	}
+
+				var clip = new ClipboardJS('#copy');
+
+				clip.on("success", function() {
+				  copyBtn.innerHTML = "Tersalin"
+				});
+				clip.on("error", function() {
+				  console.log("huuuu")
+				});
 
 
+			  document.addEventListener('DOMContentLoaded', function() {
+			    var elems = document.querySelectorAll('#date');
+			    var instances = M.Datepicker.init(elems, {
+			    	onClose: () => {
+			    		date = elems[0].value
+		  				updateURL();
+			    	}
+			    });
+			  });
 
+		  </script>
 
 </body>
-
 </html>
